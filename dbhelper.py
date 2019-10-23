@@ -102,7 +102,6 @@ class DBHelper:
         else:
             self.conn.commit()
 
-
     def get_all_phones(self):
         stmt = "SELECT Phone FROM Users "
         cur = self.conn.cursor()
@@ -126,7 +125,6 @@ class DBHelper:
             print("ERROR DATABASE buffer")
             self.conn.close()
 
-
     def remove_buf(self, id):
         try:
             stmt = "UPDATE Users SET User_Note_id = NULL where User_id = (?)"
@@ -137,7 +135,6 @@ class DBHelper:
         except (sqlite3.OperationalError, sqlite3.ProgrammingError):
             self.conn.close()
             print("ERROR DATABASE remote_buffer")
-
 
     def set_comment(self,comment, id):
         try:

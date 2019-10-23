@@ -203,7 +203,7 @@ def SearchPhone(message):
         print("Error phone input search ", e)
 
 
-def InputPhone(message):  # TODO сделать проверку на +79 и 89
+def InputPhone(message): 
     try:
         phone = c.CheckPhone(message)
         print('Телефон 205 - {}'.format(phone))
