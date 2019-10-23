@@ -1,6 +1,7 @@
 from telebot import types
-from func import bot
-from markups import back
+from func import bot, db
+
+# from markups import back
 
 
 def create_client_menu(message):
@@ -21,25 +22,33 @@ def create_search_list(message):
     bot.send_message(message.chat.id, "Как будете искать клиентов?", reply_markup=client_list)
 
 
+def create_about_client():
+    about_client = types.InlineKeyboardMarkup(row_width=1)
+    but1 = types.InlineKeyboardButton(text="Записать на сеанс.", callback_data="client_add")
+    but2 = types.InlineKeyboardButton(text="Показать архив.", callback_data="client_show_archive")
+    but3 = types.InlineKeyboardButton(text="Назад.", callback_data="back_to_search")
+    about_client.add(but1, but2, but3)
+    return about_client
+
+
 def CheckPhone(message):
     text = message.text
     print('Телефон 25 - {}'.format(text))
 
     if not text[1:].isdigit():
-        bot.send_message(message.chat.id, "Номер может состоять из цифр и знака '+'.", reply_markup=back())
+        bot.send_message(message.chat.id, "Номер может состоять из цифр и знака '+'.")
         return False
 
     if len(text) < 10:
         bot.send_message(message.chat.id,
-                         "Номер слишком короткий номер.",
-                         reply_markup=back())
+                         "Номер слишком короткий номер.")
         return False
     else:
         phone = PhoneRefactor(str(text))
         if phone is not False:
             return phone
         else:
-            bot.send_message(message.chat.id, "Номер должен начинаться с (+79/89/9).", reply_markup=back())
+            bot.send_message(message.chat.id, "Номер должен начинаться с (+79/89/9).")
             return False
 
 
@@ -54,6 +63,19 @@ def PhoneRefactor(phone):
     else:
         return False
 
+
+def search_with_phone(message):
+    phone = message.text
+
+    phones = db.get_all_phones()
+    for x in phones:
+        if phone == x:
+            user = db.get_userinfo(1, phone)
+            text = "ФИО - {} {}, \nТелефон - {}, Telegram - @{}".format(user.user_Rname, user.user_Rlname,
+                                                                        user.phone, user.username)
+            markup = create_about_client()
+            db.buffer(message.chat.id, user.user_id)
+            bot.send_message(message.chat.id, text=text, reply_markup=markup)
 
 
 

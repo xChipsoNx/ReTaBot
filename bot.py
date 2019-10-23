@@ -1,7 +1,7 @@
 import datetime
 
 import telebot
-from telebot import apihelper, TeleBot, types
+from telebot import apihelper, TeleBot
 
 import func
 import client as c
@@ -120,7 +120,7 @@ def inline_main(call):
     elif data.startswith("search_"):
         if data == "search_phone":
             bot.send_message(call_id, "Введите номер телефона клиента:", reply_markup=m.C_back())
-            bot.register_next_step_handler(call.message, Search_Phone)
+            bot.register_next_step_handler(call.message, SearchPhone)
         if data == "search_name":
             pass
         if data == "search_tg":
@@ -162,10 +162,13 @@ def inline_main(call):
         if data == "back_to_menu":
             bot.clear_step_handler_by_chat_id(chat_id=call.message.chat.id)
             return handle_message1(call.message)
+
         if data == "back_to_setting":
             bot.clear_step_handler_by_chat_id(chat_id=call.message.chat.id)
             return handle_message3(call.message)
+
         if data == "back_to_search":
+            db.remove_buf(user.user_id)
             bot.clear_step_handler_by_chat_id(chat_id=call.message.chat.id)
             return c.create_search_list(call.message)
 
@@ -187,8 +190,17 @@ MASTER_____MASTER_____MASTER_____MASTER_____MASTER_____MASTER_____MASTER_____MAS
 
 
 def SearchPhone(message):
-    # TODO тутутутутуутутутуттутут
-    pass
+    try:
+        phone = c.CheckPhone(message)
+        if phone is False:
+            bot.send_message(message.chat.id, "Попробуйте еще раз: ", reply_markup=m.S_back())
+            bot.register_next_step_handler(message, SearchPhone)
+            return
+
+        c.search_with_phone(message)
+
+    except Exception as e:
+        print("Error phone input search ", e)
 
 
 def InputPhone(message):  # TODO сделать проверку на +79 и 89
@@ -197,6 +209,7 @@ def InputPhone(message):  # TODO сделать проверку на +79 и 89
         print('Телефон 205 - {}'.format(phone))
 
         if phone is False:
+            bot.send_message(message.chat.id, "Попробуйте еще раз: ", reply_markup=back())
             bot.register_next_step_handler(message, InputPhone)
             return
 

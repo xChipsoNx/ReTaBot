@@ -1,5 +1,6 @@
 from markups import *
 import client as c
+import func
 
 
 def inline_main_func(call):
@@ -64,6 +65,11 @@ def inline_main_func(call):
             c.create_search_list(call.message)
         if data == "client_archive":
             pass
+        if data == "client_add":
+            keytab = func.note_seance(now.year, now.month, now.day)
+            bot.send_message(call.message.chat.id, "Выберите удобную дату для записи. "
+                                                   "Галочками отмечены свободные половины дня "
+                                                   "[День(~12:00)/Вечер(~17:00)].", reply_markup=keytab)
 
     elif data.startswith('NOTE-'):
         text, markupn = note_detal_info(call)
