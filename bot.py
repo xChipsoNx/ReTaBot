@@ -120,7 +120,7 @@ def inline_main(call):
     elif data.startswith("search_"):
         if data == "search_phone":
             bot.send_message(call_id, "Введите номер телефона клиента:", reply_markup=m.C_back())
-            bot.register_next_step_handler(call.message, Search_Phone)
+            bot.register_next_step_handler(call.message, SearchPhone)
         if data == "search_name":
             pass
         if data == "search_tg":
@@ -187,11 +187,12 @@ MASTER_____MASTER_____MASTER_____MASTER_____MASTER_____MASTER_____MASTER_____MAS
 
 
 def SearchPhone(message):
+    print(message)
     # TODO тутутутутуутутутуттутут
     pass
 
 
-def InputPhone(message):  # TODO сделать проверку на +79 и 89
+def InputPhone(message):
     try:
         phone = c.CheckPhone(message)
         print('Телефон 205 - {}'.format(phone))
