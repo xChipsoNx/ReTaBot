@@ -108,3 +108,7 @@ def main_note_menu(message):
         bot.send_message(message.chat.id,
                          "Возникли проблемы с вашими данными. Введите /start.\n Если это не поможет, напишите "
                          "администратору: @Alex_Chipson")
+
+
+def ask_add_new_client():
+    markup = types.InlineKeyboardMarkup(row_width=1)

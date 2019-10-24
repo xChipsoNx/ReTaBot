@@ -1,7 +1,7 @@
 import datetime
 
 import telebot
-from telebot import apihelper, TeleBot, types
+from telebot import apihelper, TeleBot
 
 import func
 import client as c
@@ -187,10 +187,17 @@ MASTER_____MASTER_____MASTER_____MASTER_____MASTER_____MASTER_____MASTER_____MAS
 
 
 def SearchPhone(message):
-    print(message)
-    # TODO тутутутутуутутутуттутут
-    pass
+    try:
+        phone = c.CheckPhone(message)
+        if phone is False:
+            bot.send_message(message.chat.id, "Попробуйте еще раз: ", reply_markup=m.S_back())
+            bot.register_next_step_handler(message, SearchPhone)
+            return
 
+        c.search_with_phone(message)
+
+    except Exception as e:
+        print("Error phone input search ", e)
 
 def InputPhone(message):
     try:
@@ -198,6 +205,7 @@ def InputPhone(message):
         print('Телефон 205 - {}'.format(phone))
 
         if phone is False:
+            bot.send_message(message.chat.id, "Попробуйте еще раз: ", reply_markup=back())
             bot.register_next_step_handler(message, InputPhone)
             return
 
