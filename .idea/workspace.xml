@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b28f6ac4-da1b-46fb-9ab0-4caf33bc7493" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbhelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbhelper.py" afterDir="false" />
-    </list>
+    <list default="true" id="b28f6ac4-da1b-46fb-9ab0-4caf33bc7493" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +89,7 @@
       <workItem from="1571818434891" duration="1181000" />
       <workItem from="1571819885585" duration="1165000" />
       <workItem from="1571823070785" duration="553000" />
-      <workItem from="1571828106470" duration="6011000" />
+      <workItem from="1571828106470" duration="6039000" />
     </task>
     <task id="LOCAL-00001" summary="доделал поиск по номеру телефона и клафиатуру для взаимодействия">
       <created>1571862880457</created>
@@ -104,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571862880458</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="правки перед сном">
+      <created>1571863399162</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1571863399162</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,7 +126,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="доделал поиск по номеру телефона и клафиатуру для взаимодействия" />
-    <option name="LAST_COMMIT_MESSAGE" value="доделал поиск по номеру телефона и клафиатуру для взаимодействия" />
+    <MESSAGE value="правки перед сном" />
+    <option name="LAST_COMMIT_MESSAGE" value="правки перед сном" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/project1$bot.coverage" NAME="bot Coverage Results" MODIFIED="1571654938474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
