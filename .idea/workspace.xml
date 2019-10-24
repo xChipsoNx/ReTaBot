@@ -90,6 +90,7 @@
       <workItem from="1571819885585" duration="1165000" />
       <workItem from="1571823070785" duration="553000" />
       <workItem from="1571828106470" duration="6039000" />
+      <workItem from="1571910671208" duration="292000" />
     </task>
     <task id="LOCAL-00001" summary="доделал поиск по номеру телефона и клафиатуру для взаимодействия">
       <created>1571862880457</created>
@@ -105,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571863399162</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="правки перед сном">
+      <created>1571910794821</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1571910794822</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
