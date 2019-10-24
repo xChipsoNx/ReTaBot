@@ -106,8 +106,13 @@ class DBHelper:
         stmt = "SELECT Phone FROM Users "
         cur = self.conn.cursor()
         phones = [phone[0] for phone in cur.execute(stmt)]
-        print(phones)
         return phones
+
+    def get_all_names(self):
+        stmt = "SELECT User_Rname FROM Users "
+        cur = self.conn.cursor()
+        users = [user[0] for user in cur.execute(stmt)]
+        return users
 
     def get_all_masters(self):
         stmt = "SELECT * FROM Users WHERE Rank = 'MASTER' "

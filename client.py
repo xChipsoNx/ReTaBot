@@ -78,5 +78,16 @@ def search_with_phone(message):
             bot.send_message(message.chat.id, text=text, reply_markup=markup)
 
 
+def search_with_name(message):
+    name = message.text
+    names = db.get_all_names()
+    markup = types.InlineKeyboardMarkup(row_width=1)
+    for x in names:
+        if name == x:
+
+            text =
+            callback =
+            markup.add(types.InlineKeyboardButton(text=text, callback_data=callback))
+
 
 

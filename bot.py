@@ -114,7 +114,7 @@ def inline_main(call):
     if data == "M-add":
         bot.send_message(call.message.chat.id, "<b>Введите номер телефона клиента в формате: 89012345678.</b>",
                          parse_mode='HTML',
-                         reply_markup=back())  # TODO убрать тел из user_id и добавить возможность посл привязки
+                         reply_markup=back())
         bot.register_next_step_handler(call.message, InputPhone)
 
     elif data.startswith("search_"):
@@ -122,7 +122,8 @@ def inline_main(call):
             bot.send_message(call_id, "Введите номер телефона клиента:", reply_markup=m.C_back())
             bot.register_next_step_handler(call.message, SearchPhone)
         if data == "search_name":
-            pass
+            bot.send_message(call_id, "Введите имя клиента или первые 2 буквы:", reply_markup=m.C_back())
+            bot.register_next_step_handler(call.message, SearchName)
         if data == "search_tg":
             pass
         if data == "search_list":
@@ -181,9 +182,23 @@ MASTER_____MASTER_____MASTER_____MASTER_____MASTER_____MASTER_____MASTER_____MAS
 """
 
 
-# TODO доделать меню записей, выполненые сеансы, отправку уведомений (начало, отмена, напоминания за час)
-# TODO почистить код от мусора, сделать меню клиентов, справочник, старые записи, акции, масс рассылку
-# TODO сделать пометки о прошедших днях
+# TODO +доделать меню записей, выполненые сеансы, -+отправку уведомений (+начало, -отмена, -напоминания за час)
+# TODO +почистить код от мусора, +-сделать меню клиентов, +-справочник, старые записи, акции, масс рассылку
+# TODO +сделать пометки о прошедших днях
+
+
+def SearchName(message):
+    try:
+        if not message.text.isalpha() or len(message.text) < 2:
+            bot.send_message(message.chat.id, "Ничего не введено, или введены недопустимые символы.\n"
+                                              "Попробуйте еще раз: ", reply_markup=m.S_back())
+            bot.register_next_step_handler(message, InputName)
+            return
+
+        c.search_with_name(message)
+
+    except Exception as e:
+        print("Error name input search ", e)
 
 
 def SearchPhone(message):
