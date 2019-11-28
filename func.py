@@ -1,6 +1,7 @@
-from mycalendar import *
 import telebot
+
 from APIconst import API_TOKEN
+from mycalendar import *
 
 bot = telebot.TeleBot(API_TOKEN)
 
@@ -41,13 +42,13 @@ def show_half_u(date):
     print(h)
     if h[0] is None or h[0] == 0:
         callback_data = create_callback_data("HALF-1", year, month, day)
-        text = "Пр. время начала сеанса 12:00 " + "[✅]"
+        text = "Пр. время начала сеанса 14:00 " + "[✅]"
         keytab.add(telebot.types.InlineKeyboardButton(text=text,
                                                       callback_data=callback_data))
 
     if h[1] is None or h[1] == 0:
         callback_data = create_callback_data("HALF-2", year, month, day)
-        text = "Пр. время начала сеанса 17:00 " + "[✅]"
+        text = "Пр. время начала сеанса 18:00 " + "[✅]"
         keytab.add(telebot.types.InlineKeyboardButton(text=text,
                                                       callback_data=callback_data))
     return keytab
@@ -66,9 +67,9 @@ def make_note(call, h):
             db.make_note(datetime.date(int(year), int(month), int(day)), h, call.message.chat.id, note_id)
             masters = db.get_all_masters()
 
-            nTime = '~12-00'
+            nTime = '~14-00'
             if h == 2:
-                nTime = '~17-00'
+                nTime = '~18-00'
 
             for master in masters:
                 bot.send_message(master, "✅ К вам записался клиент {} {}, тел: {}, tg: @{}\nна {}/{}/{} в {}."
@@ -130,8 +131,8 @@ def date_handler(call):  # TODO доделать показ месяцев
 def mshow_notes(year, month, nday):
     keytab = types.InlineKeyboardMarkup()
     my_calendar = calendar.monthcalendar(year, month)
-    time1 = ' 🌞12:00 👀'
-    time2 = ' 🌙17:00 👀'
+    time1 = ' 🌞14:00 👀'
+    time2 = ' 🌙18:00 👀'
     for week in my_calendar:
         for day in week:
             if day != 0 and day >= nday:

@@ -1,5 +1,7 @@
 from telebot import types
+
 from func import bot, db
+
 
 # from markups import back
 
@@ -84,9 +86,8 @@ def search_with_name(message):
     markup = types.InlineKeyboardMarkup(row_width=1)
     for x in names:
         if name == x:
-
-            text =
-            callback =
+            text = ""
+            callback = ""
             markup.add(types.InlineKeyboardButton(text=text, callback_data=callback))
 
 

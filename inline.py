@@ -1,6 +1,6 @@
-from markups import *
 import client as c
 import func
+from markups import *
 
 
 def inline_main_func(call):
@@ -14,7 +14,7 @@ def inline_main_func(call):
                 keytab = note_seance(now.year, now.month, now.day)
                 bot.send_message(call.message.chat.id, "Выберите удобную дату для записи. "
                                                        "Галочками отмечены свободные половины дня "
-                                                       "[День(~12:00)/Вечер(~17:00)].", reply_markup=keytab)
+                                                       "[День(~14:00)/Вечер(~18:00)].", reply_markup=keytab)
             else:
                 bot.send_message(call.message.chat.id, "Вы уже записаны.")
         if data == "U-rem":
@@ -69,7 +69,7 @@ def inline_main_func(call):
             keytab = func.note_seance(now.year, now.month, now.day)
             bot.send_message(call.message.chat.id, "Выберите удобную дату для записи. "
                                                    "Галочками отмечены свободные половины дня "
-                                                   "[День(~12:00)/Вечер(~17:00)].", reply_markup=keytab)
+                                                   "[День(~14:00)/Вечер(~18:00)].", reply_markup=keytab)
 
     elif data.startswith('NOTE-'):
         text, markupn = note_detal_info(call)
@@ -96,13 +96,13 @@ def inline_main_func(call):
             make_note(call, 1)
             if user.Rank != ("MASTER" or "ADMIN"):
                 (action, year, month, day) = call.data.split(";")
-                bot.edit_message_text(text="Вы записались к мастеру на {}/{}/{} в ~12:00\n"
+                bot.edit_message_text(text="Вы записались к мастеру на {}/{}/{} в ~14:00\n"
                                            "Напишите мастеру и обговорите детали встречи.".format(day, month, year),
                                       chat_id=call.message.chat.id,
                                       message_id=call.message.message_id)
             else:
                 (action, year, month, day) = call.data.split(";")
-                bot.edit_message_text(text="Вы записали клиента на {}/{}/{} в ~12:00\n"
+                bot.edit_message_text(text="Вы записали клиента на {}/{}/{} в ~14:00\n"
                                            "Напишите клиенту и сообщите ему о записи.".format(day, month, year),
                                       chat_id=call.message.chat.id,
                                       message_id=call.message.message_id)
@@ -111,13 +111,13 @@ def inline_main_func(call):
             make_note(call, 2)
             if user.Rank != ("MASTER" or "ADMIN"):
                 (action, year, month, day) = call.data.split(";")
-                bot.edit_message_text(text="Вы записались к мастеру на {}/{}/{} в ~17:00\n"
+                bot.edit_message_text(text="Вы записались к мастеру на {}/{}/{} в ~18:00\n"
                                            "Напишите мастеру и обговорите детали встречи.".format(day, month, year),
                                       chat_id=call.message.chat.id,
                                       message_id=call.message.message_id)
             else:
                 (action, year, month, day) = call.data.split(";")
-                bot.edit_message_text(text="Вы записали клиента на {}/{}/{} в ~17:00\n"
+                bot.edit_message_text(text="Вы записали клиента на {}/{}/{} в ~18:00\n"
                                            "Напишите клиенту и сообщите ему о записи.".format(day, month, year),
                                       chat_id=call.message.chat.id,
                                       message_id=call.message.message_id)

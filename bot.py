@@ -3,13 +3,13 @@ import datetime
 import telebot
 from telebot import apihelper, TeleBot
 
-import func
 import client as c
+import func
 import inline
 import markups as m
-from markups import back
 from APIconst import *
 from dbhelper import DBHelper
+from markups import back
 
 """--------------------------------------------------------------------------------------------"""
 bot: TeleBot = telebot.TeleBot(API_TOKEN)  # передача токена
@@ -246,7 +246,7 @@ def InputPhone(message):
                 keytab = func.note_seance(now.year, now.month, now.day)
                 bot.send_message(message.chat.id, "Выберите удобную дату для записи. "
                                                   "Галочками отмечены свободные половины дня "
-                                                  "[День(~12:00)/Вечер(~17:00)].", reply_markup=keytab)
+                                                  "[День(~14:00)/Вечер(~18:00)].", reply_markup=keytab)
         else:
             phones = db.get_all_phones()
             for x in phones:
@@ -311,7 +311,7 @@ def InputLastName(message):
             keytab = func.note_seance(now.year, now.month, now.day)
             bot.send_message(message.chat.id, "Выберите удобную дату для записи. "
                                               "Галочками отмечены свободные половины дня "
-                                              "[День(~12:00)/Вечер(~17:00)].", reply_markup=keytab)
+                                              "[День(~14:00)/Вечер(~18:00)].", reply_markup=keytab)
         else:
             db.set_user_rlname(message.text, message.chat.id)
             if user.Rank == "R":
