@@ -1,5 +1,4 @@
-
-API_TOKEN = '809779858:AAE_XVHxdqIpjMasS59rDSpYOrco0Re-goI'
+API_TOKEN = '809779858:AAFRCtOme6SkKezUcEirxhCQk63-Z3ob_Cg'
 
 proxy1 = 'https://xdEpbx:mc1WE2@81.177.23.92:25959'
 #proxy2 = 'https://Q78F1D:KEW6Et@140.82.34.46:18374'

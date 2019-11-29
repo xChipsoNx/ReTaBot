@@ -11,7 +11,13 @@ def inline_main_func(call):
         if data == "U-add":
             if user.note_id is None:
 
-                keytab = note_seance(now.year, now.month, now.day)
+                keylist = note_seance(now.year, now.month, now.day)
+                keytab = types.InlineKeyboardMarkup()
+                if len(keylist) < 5:
+                    keylist2 = func.note_seance(now.year, now.month + 1, 0)
+                    keytab.add(*keylist, *keylist2)
+                else:
+                    keytab.add(*keylist)
                 bot.send_message(call.message.chat.id, "Выберите удобную дату для записи. "
                                                        "Галочками отмечены свободные половины дня "
                                                        "[День(~14:00)/Вечер(~18:00)].", reply_markup=keytab)
@@ -66,7 +72,13 @@ def inline_main_func(call):
         if data == "client_archive":
             pass
         if data == "client_add":
-            keytab = func.note_seance(now.year, now.month, now.day)
+            keylist = note_seance(now.year, now.month, now.day)
+            keytab = types.InlineKeyboardMarkup()
+            if len(keylist) < 5:
+                keylist2 = func.note_seance(now.year, now.month + 1, 0)
+                keytab.add(*keylist, *keylist2)
+            else:
+                keytab.add(*keylist)
             bot.send_message(call.message.chat.id, "Выберите удобную дату для записи. "
                                                    "Галочками отмечены свободные половины дня "
                                                    "[День(~14:00)/Вечер(~18:00)].", reply_markup=keytab)

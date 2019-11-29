@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b28f6ac4-da1b-46fb-9ab0-4caf33bc7493" name="Default Changelist" comment="Alpha 1.0">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project1.iml" afterDir="false" />
+    <list default="true" id="b28f6ac4-da1b-46fb-9ab0-4caf33bc7493" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIconst.py" beforeDir="false" afterPath="$PROJECT_DIR$/APIconst.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyDataBase" beforeDir="false" afterPath="$PROJECT_DIR$/MyDataBase" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/func.py" beforeDir="false" afterPath="$PROJECT_DIR$/func.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inline.py" beforeDir="false" afterPath="$PROJECT_DIR$/inline.py" afterDir="false" />
     </list>
@@ -107,7 +105,8 @@
       <workItem from="1571828106470" duration="6039000" />
       <workItem from="1571910671208" duration="292000" />
       <workItem from="1571911910386" duration="4503000" />
-      <workItem from="1574983333462" duration="1880000" />
+      <workItem from="1574983333462" duration="10090000" />
+      <workItem from="1574993788770" duration="1066000" />
     </task>
     <task id="LOCAL-00001" summary="доделал поиск по номеру телефона и клафиатуру для взаимодействия">
       <created>1571862880457</created>
@@ -137,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571912133181</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Alpha 1.0">
+      <created>1574985372619</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1574985372619</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,13 +163,17 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="доделал поиск по номеру телефона и клафиатуру для взаимодействия" />
     <MESSAGE value="правки перед сном" />
     <MESSAGE value="реворкр API" />
-    <option name="LAST_COMMIT_MESSAGE" value="реворкр API" />
+    <MESSAGE value="Alpha 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alpha 1.0" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/project1$bot.coverage" NAME="bot Coverage Results" MODIFIED="1571654938474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ReTaBot$bot.coverage" NAME="bot Coverage Results" MODIFIED="1574984670450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ReTaBot$bot.coverage" NAME="bot Coverage Results" MODIFIED="1574994802478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

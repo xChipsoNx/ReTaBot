@@ -1,16 +1,13 @@
-import telebot
-
 from APIconst import API_TOKEN
 from mycalendar import *
 
 bot = telebot.TeleBot(API_TOKEN)
 
 
-def note_seance(year, month, nday=0):
-    my_calendar = calendar.monthcalendar(year, month)
-    keytab = types.InlineKeyboardMarkup()
-
-    for week in my_calendar:
+def note_seance(year, month, nday):
+    this_month = calendar.monthcalendar(year, month)
+    keylist = []
+    for week in this_month:
         for day in week:
             if day != 0 and day >= nday:
                 w = db.get_work(datetime.date(year, month, day))
@@ -19,17 +16,17 @@ def note_seance(year, month, nday=0):
                     callback_data = create_callback_data("WDAY", year, month, day)
                     if (h[0] is None or h[0] == 0) and (h[1] is None or h[1] == 0):
                         text = str(day) + '.' + str(month) + '.' + str(year) + " [✅/✅]"
-                        keytab.add(telebot.types.InlineKeyboardButton(text=text,
-                                                                      callback_data=callback_data))
+                        keylist.append(telebot.types.InlineKeyboardButton(text=text,
+                                                                          callback_data=callback_data))
                     elif h[0] is None or h[0] == 0:
                         text = str(day) + '.' + str(month) + '.' + str(year) + " [✅/❌]"
-                        keytab.add(telebot.types.InlineKeyboardButton(text=text,
-                                                                      callback_data=callback_data))
+                        keylist.append(telebot.types.InlineKeyboardButton(text=text,
+                                                                          callback_data=callback_data))
                     elif h[1] is None or h[1] == 0:
                         text = str(day) + '.' + str(month) + '.' + str(year) + " [❌/✅]"
-                        keytab.add(telebot.types.InlineKeyboardButton(text=text,
-                                                                      callback_data=callback_data))
-    return keytab
+                        keylist.append(telebot.types.InlineKeyboardButton(text=text,
+                                                                          callback_data=callback_data))
+    return keylist
 
 
 def show_half_u(date):

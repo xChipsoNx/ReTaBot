@@ -1,7 +1,7 @@
 import datetime
 
 import telebot
-from telebot import apihelper, TeleBot
+from telebot import apihelper, TeleBot, types
 
 import client as c
 import func
@@ -29,13 +29,15 @@ def send_welcome(message):
 
     if user is not None:
         db.setUsername(message.chat.username, message.chat.id)
-        bot.send_message(message.chat.id, "Привет, тут ты можешь записаться на сеанс татуировки к @bobatattoo",
+        bot.send_message(message.chat.id,
+                         "Привет, тут ты можешь записаться на консультацию или сеанс татуировки к @bobatattoo",
                          reply_markup=m.make_markup_menu(user.Rank))
     else:
         db.new_user(str(message.from_user.id), message.chat.username,
                     message.from_user.first_name, message.from_user.last_name, rank)
         Mmenu = m.make_markup_menu('R')
-        bot.send_message(message.chat.id, "Привет, тут ты можешь записаться на сеанс татуировки к @bobatattoo",
+        bot.send_message(message.chat.id,
+                         "Привет, тут ты можешь записаться на консультацию или сеанс татуировки к @bobatattoo",
                          reply_markup=Mmenu)
 
 
@@ -243,10 +245,16 @@ def InputPhone(message):
                                                                            user2.username)
                 bot.send_message(message.chat.id, text=text)
                 db.buffer(message.chat.id, user2.user_id)
-                keytab = func.note_seance(now.year, now.month, now.day)
+                keylist = func.note_seance(now.year, now.month, now.day)
+                key = types.InlineKeyboardMarkup()
+                if len(keylist) < 5:
+                    keylist2 = func.note_seance(now.year, now.month + 1, 0)
+                    key.add(*keylist, *keylist2)
+                else:
+                    key.add(*keylist)
                 bot.send_message(message.chat.id, "Выберите удобную дату для записи. "
                                                   "Галочками отмечены свободные половины дня "
-                                                  "[День(~14:00)/Вечер(~18:00)].", reply_markup=keytab)
+                                                  "[День(~14:00)/Вечер(~18:00)].", reply_markup=key)
         else:
             phones = db.get_all_phones()
             for x in phones:
@@ -308,7 +316,13 @@ def InputLastName(message):
         if (user.Rank == "MASTER" or user.Rank == "ADMIN") and user.comment != "S":
             db.set_user_rlname(message.text, user.note_id)
             bot.send_message(user.user_id, "Клиент добавлени в список клиентов.")
-            keytab = func.note_seance(now.year, now.month, now.day)
+            keylist = func.note_seance(now.year, now.month, now.day)
+            keytab = types.InlineKeyboardMarkup()
+            if len(keylist) < 5:
+                keylist2 = func.note_seance(now.year, now.month + 1, 0)
+                keytab.add(*keylist, *keylist2)
+            else:
+                keytab.add(*keylist)
             bot.send_message(message.chat.id, "Выберите удобную дату для записи. "
                                               "Галочками отмечены свободные половины дня "
                                               "[День(~14:00)/Вечер(~18:00)].", reply_markup=keytab)
@@ -327,7 +341,7 @@ def InputLastName(message):
                 bot.send_message(user.user_id, "Фамилия сохарнена.", reply_markup=markup)
 
     except Exception as e:
-        print("Error name input ", e)
+        print("Error Lname input ", e)
 
 
 bot.infinity_polling(True)
